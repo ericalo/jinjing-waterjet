@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勁淨科技水刀工程｜苗栗高壓清管專家</title>
+<meta name="description" content="勁淨科技水刀工程，專業高壓水刀清管服務，服務範圍涵蓋苗栗、新竹、台中。施工前後影像記錄，讓您看得到成果。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --blue:   #1565C0;
+    --lblue:  #1E88E5;
+    --orange: #F57C00;
+    --dark:   #1a1a2e;
+    --gray:   #f5f7fa;
+    --text:   #333;
+  }
+  body { font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif; color: var(--text); }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(21,101,192,0.96);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  nav img.nav-logo { height: 44px; }
+  .nav-cta {
+    background: #fff; color: var(--blue);
+    font-weight: bold; font-size: 15px;
+    padding: 8px 20px; border-radius: 30px;
+    transition: all .2s;
+  }
+  .nav-cta:hover { background: #e3f2fd; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0d3b8e 0%, #1565C0 50%, #1E88E5 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero img.mascot { width: 130px; margin-bottom: 20px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); }
+  .hero h1 { font-size: clamp(28px, 5vw, 52px); color: #fff; line-height: 1.3; margin-bottom: 16px; }
+  .hero h1 span { color: #FDD835; }
+  .hero p.sub { font-size: clamp(15px, 2vw, 20px); color: rgba(255,255,255,0.85); margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: #FDD835; color: #1a1a2e;
+    font-size: 17px; font-weight: bold;
+    padding: 14px 32px; border-radius: 40px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: transform .2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15); color: #fff;
+    border: 2px solid rgba(255,255,255,0.6);
+    font-size: 17px; font-weight: bold;
+    padding: 14px 32px; border-radius: 40px;
+    backdrop-filter: blur(4px);
+    transition: background .2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.25); }
+  .slogan-bar {
+    margin-top: 48px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 14px 28px;
+    display: inline-block;
+    font-size: 16px; color: rgba(255,255,255,0.9);
+    letter-spacing: 2px;
+  }
+
+  /* ALERT BANNER — 工班交接 */
+  .alert-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+    padding: 56px 5%;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .alert-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('images/case3.jpg') center/cover no-repeat;
+    opacity: 0.06;
+  }
+  .alert-inner { position: relative; z-index: 1; }
+  .alert-tag {
+    display: inline-block;
+    background: var(--orange); color: #fff;
+    font-size: 13px; font-weight: bold;
+    padding: 4px 16px; border-radius: 20px;
+    letter-spacing: 2px; margin-bottom: 20px;
+  }
+  .alert-banner h2 {
+    font-size: clamp(22px, 4vw, 40px);
+    color: #fff; line-height: 1.4; margin-bottom: 12px;
+  }
+  .alert-banner h2 em { color: #FDD835; font-style: normal; }
+  .alert-banner p { color: rgba(255,255,255,0.7); font-size: 15px; margin-bottom: 36px; }
+  .alert-steps {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+    margin-bottom: 36px;
+  }
+  .alert-step {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 16px 24px;
+    color: #fff; font-size: 14px; min-width: 160px;
+  }
+  .alert-step .step-num { font-size: 24px; margin-bottom: 6px; }
+
+  /* SECTION COMMON */
+  section { padding: 72px 5%; }
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: clamp(22px, 3vw, 34px); color: var(--blue); }
+  .section-title p { color: #666; margin-top: 8px; font-size: 15px; }
+  .section-title h2::after {
+    content: ''; display: block;
+    width: 48px; height: 4px;
+    background: var(--lblue); border-radius: 2px;
+    margin: 12px auto 0;
+  }
+
+  /* FEATURES */
+  .features { background: var(--gray); }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .feat-card {
+    background: #fff; border-radius: 16px;
+    padding: 32px 24px; text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: transform .2s;
+  }
+  .feat-card:hover { transform: translateY(-4px); }
+  .feat-icon { font-size: 40px; margin-bottom: 16px; }
+  .feat-card h3 { font-size: 17px; color: var(--blue); margin-bottom: 10px; }
+  .feat-card p { font-size: 14px; color: #666; line-height: 1.7; }
+  .feat-card.equip { border-top: 4px solid var(--orange); }
+  .feat-card.equip h3 { color: var(--orange); }
+
+  /* COMPARISON */
+  .comparison { background: #fff; }
+  .compare-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; }
+  .compare-table { width: 100%; border-collapse: collapse; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .compare-table th { padding: 18px 20px; font-size: 16px; text-align: center; }
+  .compare-table th:first-child { background: #f0f0f0; color: #555; width: 30%; }
+  .compare-table th.th-old { background: #9E9E9E; color: #fff; }
+  .compare-table th.th-new { background: var(--blue); color: #fff; }
+  .compare-table td { padding: 14px 20px; font-size: 14px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+  .compare-table td:first-child { text-align: left; font-weight: bold; color: #444; background: #fafafa; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td:not(:first-child) { background: #f9fbff; }
+  .badge-bad  { color: #c62828; font-weight: bold; }
+  .badge-good { color: #2e7d32; font-weight: bold; }
+  .compare-note { text-align: center; margin-top: 20px; font-size: 13px; color: #888; }
+
+  /* SERVICES */
+  .services { background: var(--gray); }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .svc-card {
+    background: #fff;
+    border: 2px solid #e3f2fd; border-radius: 16px;
+    padding: 28px 24px; position: relative; overflow: hidden;
+  }
+  .svc-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 6px; height: 100%; background: var(--lblue);
+  }
+  .svc-card.highlight::before { background: var(--orange); }
+  .svc-card.highlight { border-color: #ffe0b2; }
+  .svc-badge {
+    display: inline-block; background: var(--orange); color: #fff;
+    font-size: 11px; font-weight: bold; padding: 2px 10px;
+    border-radius: 10px; margin-bottom: 10px;
+  }
+  .svc-card h3 { font-size: 18px; color: var(--dark); margin-bottom: 14px; }
+  .svc-item { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+  .svc-item:last-child { border-bottom: none; }
+  .svc-item::before { content: '✔'; color: var(--lblue); font-size: 13px; flex-shrink: 0; }
+  .svc-card.highlight .svc-item::before { color: var(--orange); }
+  .svc-note { font-size: 12px; color: #999; margin-top: 14px; }
+  .svc-cta { margin-top: 40px; text-align: center; }
+  .svc-cta p { color: #555; margin-bottom: 16px; font-size: 15px; }
+
+  /* GALLERY */
+  .gallery { background: var(--dark); }
+  .gallery .section-title h2 { color: #fff; }
+  .gallery .section-title p { color: rgba(255,255,255,0.6); }
+  .gallery .section-title h2::after { background: #FDD835; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .gallery-item { border-radius: 12px; overflow: hidden; position: relative; aspect-ratio: 4/3; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-label {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(0,0,0,0.6); color: #FDD835;
+    font-size: 12px; font-weight: bold;
+    padding: 3px 10px; border-radius: 12px;
+  }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.72));
+    color: #fff; font-size: 13px; padding: 20px 14px 12px;
+  }
+
+  /* BUILDER CTA */
+  .builder-cta {
+    background: linear-gradient(135deg, var(--orange) 0%, #E65100 100%);
+    padding: 64px 5%; text-align: center;
+  }
+  .builder-cta h2 { font-size: clamp(22px, 3vw, 36px); color: #fff; margin-bottom: 12px; }
+  .builder-cta p { color: rgba(255,255,255,0.88); font-size: 16px; margin-bottom: 32px; line-height: 1.7; }
+  .btn-white {
+    background: #fff; color: var(--orange);
+    font-size: 18px; font-weight: bold;
+    padding: 16px 40px; border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform .2s;
+    display: inline-block;
+  }
+  .btn-white:hover { transform: translateY(-2px); }
+
+  /* CONTACT */
+  .contact { background: var(--gray); }
+  .contact-wrap { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .contact-info h3 { font-size: 22px; color: var(--blue); margin-bottom: 24px; }
+  .contact-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .contact-icon { font-size: 28px; }
+  .contact-label { font-size: 13px; color: #888; }
+  .contact-value { font-size: 20px; font-weight: bold; color: var(--dark); }
+  .contact-area { font-size: 14px; color: #555; margin-top: 4px; }
+  .qr-box { text-align: center; }
+  .qr-box img { width: 160px; border: 4px solid #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .qr-box p { margin-top: 12px; font-size: 14px; color: #555; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.6);
+    text-align: center; padding: 24px 5%; font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .contact-wrap { grid-template-columns: 1fr; text-align: center; }
+    .contact-row { justify-content: center; }
+    .alert-steps { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="images/logo.png" alt="勁淨科技" class="nav-logo">
+  <a href="tel:0917802177" class="nav-cta">📞 立即撥打</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="images/mascot.png" alt="勁淨吉祥物" class="mascot">
+    <h1>管路不通？<span>交給勁淨！</span></h1>
+    <p class="sub">高壓水刀精準疏通，施工前後全程影像記錄</p>
+    <div class="hero-btns">
+      <a href="tel:0917802177" class="btn-primary">📞 0917-802177</a>
+      <a href="https://line.me/ti/p/~@jinjing" class="btn-secondary">加 LINE 詢價</a>
+    </div>
+    <div class="slogan-bar">勁淨水刀・精準到位・潔淨到震撼</div>
+  </div>
+</section>
+
+<!-- 工班交接 ALERT BANNER -->
+<div class="alert-banner">
+  <div class="alert-inner">
+    <div class="alert-tag">建商・工班必看</div>
+    <h2>工班交接，<br><em>別讓水管堵塞危機跟著你。</em></h2>
+    <p>新建案完工前，管路內殘留水泥砂漿、發泡劑、施工廢料是常見問題。<br>交屋後才發現，責任難釐清、住戶抱怨不斷。</p>
+    <div class="alert-steps">
+      <div class="alert-step">
+        <div class="step-num">🔍</div>
+        <div>內視鏡<br>全管路診斷</div>
+      </div>
+      <div class="alert-step">
+        <div class="step-num">⚡</div>
+        <div>高壓水刀<br>徹底清洗</div>
+      </div>
+      <div class="alert-step">
+        <div class="step-num">🎥</div>
+        <div>影像記錄<br>交屋有保障</div>
+      </div>
+    </div>
+    <a href="tel:0917802177" class="btn-primary">立即預約水管健檢</a>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-title">
+    <h2>為什麼選擇勁淨</h2>
+    <p>專業設備、透明記錄、準時到場</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card equip">
+      <div class="feat-icon">📡</div>
+      <h3>30 米自動水平內視鏡</h3>
+      <p>深入管道精準定位阻塞點，不猜測、不亂挖，施工前先診斷再下刀。</p>
+    </div>
+    <div class="feat-card equip">
+      <div class="feat-icon">💧</div>
+      <h3>大流量高壓水刀疏通機</h3>
+      <p>工業級大流量機型，360° 沖刷管壁，砂石、水泥塊、油脂各類阻塞一次處理。</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎥</div>
+      <h3>施工前後影像記錄</h3>
+      <p>每次清管均附上清洗前、後的影像，讓您看得到成果、說得清楚。</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <h3>廢料集中整潔處理</h3>
+      <p>清管後廢棄物收拾完畢，集中放置於指定位置，現場整潔收工。</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="section-title">
+    <h2>高壓水刀 vs 傳統通條</h2>
+    <p>同樣是清管，差別比你想像的大</p>
+  </div>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="th-old">傳統通條</th>
+          <th class="th-new">🚀 勁淨高壓水刀</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>清潔方式</td>
+          <td>機械穿刺，只打通中心孔</td>
+          <td class="badge-good">高壓水流 360° 沖刷管壁</td>
+        </tr>
+        <tr>
+          <td>管壁積料</td>
+          <td class="badge-bad">❌ 管壁積料殘留，容易再塞</td>
+          <td class="badge-good">✅ 管壁徹底清潔，延長暢通期</td>
+        </tr>
+        <tr>
+          <td>適用阻塞</td>
+          <td>一般軟性阻塞</td>
+          <td class="badge-good">砂石、水泥塊、油脂各類阻塞</td>
+        </tr>
+        <tr>
+          <td>影像記錄</td>
+          <td class="badge-bad">❌ 無法提供證明</td>
+          <td class="badge-good">✅ 施工前後全程影像</td>
+        </tr>
+        <tr>
+          <td>水泥塊處理</td>
+          <td class="badge-bad">❌ 無法處理</td>
+          <td class="badge-good">✅ 高壓破碎後清出</td>
+        </tr>
+        <tr>
+          <td>社區主幹管</td>
+          <td class="badge-bad">❌ 難以深入長管</td>
+          <td class="badge-good">✅ 可處理 10 米以上主幹管</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="compare-note">※ 通條適合應急打通；水刀是真正的徹底清潔</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-title">
+    <h2>服務項目</h2>
+    <p>依實際現場狀況評估報價，歡迎來電詢問</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card highlight">
+      <div class="svc-badge">建商推薦</div>
+      <h3>🏗️ 新建案水管健檢</h3>
+      <div class="svc-item">全棟管路內視鏡檢查</div>
+      <div class="svc-item">施工殘留水泥砂漿清除</div>
+      <div class="svc-item">各戶排水孔逐一巡查</div>
+      <div class="svc-item">幹管高壓清洗</div>
+      <div class="svc-item">完整影像記錄報告</div>
+      <p class="svc-note">※ 交屋前完成，有效降低住戶投訴</p>
+    </div>
+    <div class="svc-card">
+      <h3>🏠 住宅排水清管</h3>
+      <div class="svc-item">排水孔看管診斷</div>
+      <div class="svc-item">同一水平管管口清潔</div>
+      <div class="svc-item">水平管塞半管清洗（5米內）</div>
+      <div class="svc-item">水平管塞滿管清洗（5米內）</div>
+      <div class="svc-item">全戶孔洞清洗</div>
+      <p class="svc-note">※ 有清管服務者免收看管費</p>
+    </div>
+    <div class="svc-card">
+      <h3>🏢 建物主幹管清管</h3>
+      <div class="svc-item">主幹管塞半管清洗（10米內）</div>
+      <div class="svc-item">主幹管塞滿管清洗（10米內）</div>
+      <div class="svc-item">超過 10 米段落加收</div>
+      <div class="svc-item">水泥塊特殊處理</div>
+      <div class="svc-item">社區多戶統一施作優惠</div>
+      <p class="svc-note">※ 報價依現場實際狀況為準</p>
+    </div>
+  </div>
+  <div class="svc-cta">
+    <p>不確定費用？歡迎來電說明狀況，免費評估</p>
+    <a href="tel:0917802177" class="btn-primary">📞 立即詢價</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-title">
+    <h2>施工實績</h2>
+    <p>真實案場記錄，讓成果說話</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/case3.jpg" alt="高壓清管施工">
+      <div class="gallery-label">施工中</div>
+      <div class="gallery-caption">高壓水刀進管施作，積料完整清出</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/case4.jpg" alt="管道施工">
+      <div class="gallery-label">施工中</div>
+      <div class="gallery-caption">深入管道內部，徹底沖洗積料</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/case5.jpg" alt="清出廢料">
+      <div class="gallery-label">施工後</div>
+      <div class="gallery-caption">施工後廢料清出，集中放置指定位置</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER CTA -->
+<div class="builder-cta">
+  <h2>為您的建案提供最安心的「水管健檢」</h2>
+  <p>
+    新建案交屋前，管路乾不乾淨，住戶看不到但用得到。<br>
+    勁淨提供完整影像記錄，讓您交屋有憑有據，售後少糾紛。
+  </p>
+  <a href="tel:0917802177" class="btn-white">📞 預約水管健檢服務</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-title">
+    <h2>聯絡我們</h2>
+    <p>電話或 LINE 詢問，免費評估</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>勁淨科技水刀工程</h3>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">服務電話</div>
+          <a href="tel:0917802177"><div class="contact-value">0917-802177</div></a>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-label">LINE 官方帳號</div>
+          <div class="contact-value">掃描右側 QR Code</div>
+        </div>
+      </div>
+      <div class="contact-area">📍 服務範圍：苗栗（主）・新竹・台中</div>
+    </div>
+    <div class="qr-box">
+      <img src="images/line_qr.png" alt="LINE QR Code">
+      <p>掃描加入 LINE<br>快速詢價</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 勁淨科技水刀工程｜苗栗高壓清管專家</p>
+</footer>
+
+</body>
+</html>
