@@ -251,6 +251,68 @@
     .contact-row { justify-content: center; }
     .alert-steps { flex-direction: column; align-items: center; }
   }
+
+  /* PRICING in service cards */
+  .svc-price {
+    margin-top: 16px; padding-top: 14px;
+    border-top: 2px dashed #dde8f8;
+    font-size: 13.5px; color: #555; line-height: 2;
+  }
+  .svc-price strong { color: var(--dark); font-size: 15px; }
+  .svc-card.highlight .svc-price { border-color: #ffd09a; }
+
+  /* WARRANTY */
+  .warranty { background: #fff; }
+  .warranty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px; max-width: 780px; margin: 0 auto;
+  }
+  .warranty-card {
+    border-radius: 16px; padding: 32px 24px; text-align: center;
+  }
+  .warranty-card.w-blue { border: 2px solid #bbdefb; background: #f0f7ff; }
+  .warranty-card.w-gold { border: 2px solid #FDD835; background: #fffef0; }
+  .warranty-icon { font-size: 44px; margin-bottom: 10px; }
+  .warranty-num {
+    font-size: 52px; font-weight: 900; line-height: 1; color: var(--blue);
+  }
+  .warranty-card.w-gold .warranty-num { color: #E65100; }
+  .warranty-unit { font-size: 20px; font-weight: bold; vertical-align: bottom; line-height: 2.4; }
+  .warranty-label { font-size: 13px; color: #999; margin: 4px 0 12px; }
+  .warranty-type { font-size: 17px; font-weight: bold; color: var(--dark); margin-bottom: 8px; }
+  .warranty-desc { font-size: 13px; color: #777; line-height: 1.75; }
+  .warranty-exclude {
+    max-width: 640px; margin: 28px auto 0;
+    background: #fff8f8; border-radius: 12px;
+    padding: 18px 24px; border-left: 4px solid #e57373;
+    font-size: 13.5px; color: #555; line-height: 1.9;
+  }
+  .warranty-exclude b { color: #c62828; }
+
+  /* CASE STUDIES (text cards inside gallery) */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px; max-width: 1100px; margin: 28px auto 0;
+  }
+  .case-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 22px 20px;
+  }
+  .case-tag {
+    display: inline-block; background: #FDD835; color: #1a1a2e;
+    font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 10px;
+  }
+  .case-card h4 { font-size: 15px; color: #fff; margin-bottom: 8px; }
+  .case-card p { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.8; }
+  .case-result {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-size: 13px; color: #FDD835; font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -396,6 +458,10 @@
       <div class="svc-item">幹管高壓清洗</div>
       <div class="svc-item">完整影像記錄報告</div>
       <p class="svc-note">※ 交屋前完成，有效降低住戶投訴</p>
+      <div class="svc-price">
+        依全棟戶數統一報價<br>
+        <strong>歡迎來電詢問，免費估價</strong>
+      </div>
     </div>
     <div class="svc-card">
       <h3>🏠 住宅排水清管</h3>
@@ -405,6 +471,10 @@
       <div class="svc-item">水平管塞滿管清洗（5米內）</div>
       <div class="svc-item">全戶孔洞清洗</div>
       <p class="svc-note">※ 有清管服務者免收看管費</p>
+      <div class="svc-price">
+        出車費 <strong>NT$8,000</strong>（含到府診斷）<br>
+        各管路清管費 <strong>NT$2,500 / 管</strong>
+      </div>
     </div>
     <div class="svc-card">
       <h3>🏢 建物主幹管清管</h3>
@@ -414,6 +484,10 @@
       <div class="svc-item">水泥塊特殊處理</div>
       <div class="svc-item">社區多戶統一施作優惠</div>
       <p class="svc-note">※ 報價依現場實際狀況為準</p>
+      <div class="svc-price">
+        出車費 <strong>NT$8,000</strong>（含到府診斷）<br>
+        幹管費用依現場長度與阻塞狀況另報
+      </div>
     </div>
   </div>
   <div class="svc-cta">
@@ -430,6 +504,16 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
+      <img src="case1.jpg" alt="社區清管施工前">
+      <div class="gallery-label">施工前</div>
+      <div class="gallery-caption">沉砂池管線嚴重阻塞，積料壓滿管口</div>
+    </div>
+    <div class="gallery-item">
+      <img src="case2.jpg" alt="高壓水刀施作">
+      <div class="gallery-label">施工中</div>
+      <div class="gallery-caption">高壓水刀進管，水泥塊逐段破碎清出</div>
+    </div>
+    <div class="gallery-item">
       <img src="case3.jpg" alt="高壓清管施工">
       <div class="gallery-label">施工中</div>
       <div class="gallery-caption">高壓水刀進管施作，積料完整清出</div>
@@ -444,6 +528,58 @@
       <div class="gallery-label">施工後</div>
       <div class="gallery-caption">施工後廢料清出，集中放置指定位置</div>
     </div>
+  </div>
+
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="case-tag">社區大樓</div>
+      <h4>苗栗市某社區 — 全棟 13 戶地下室清管</h4>
+      <p>地下室排水管長期堵塞，各戶互通的水平幹管積料回流。分兩次施工，由距沉砂池最遠戶開始，依序推進完成全棟清通。</p>
+      <div class="case-result">✅ 13 戶全數清通，附完整影像記錄</div>
+    </div>
+    <div class="case-card">
+      <div class="case-tag">集合住宅</div>
+      <h4>後龍某大廈 — 2F ～ 5F 共 38 孔清管</h4>
+      <p>各層排水孔嚴重阻塞，幹管內含水泥塊硬質積料。水刀配合內視鏡定位，逐孔施作，水泥塊高壓破碎後完整清出。</p>
+      <div class="case-result">✅ 38 孔全數完成，頂樓幹管亦一併處理</div>
+    </div>
+    <div class="case-card">
+      <div class="case-tag">新建案健檢</div>
+      <h4>新建案交屋前 — 全棟管路內視鏡健檢</h4>
+      <p>建商要求交屋前全棟確認，內視鏡逐戶診斷，發現施工殘留砂漿及發泡劑。清洗後提供各戶施工前後影像報告供建商存檔。</p>
+      <div class="case-result">✅ 全棟無異物殘留，影像報告完整交付</div>
+    </div>
+  </div>
+</section>
+
+<!-- WARRANTY -->
+<section class="warranty">
+  <div class="section-title">
+    <h2>施工保固</h2>
+    <p>清管完工後提供書面保固卡，有問題直接聯繫，免費到府檢查</p>
+  </div>
+  <div class="warranty-grid">
+    <div class="warranty-card w-blue">
+      <div class="warranty-icon">🏢</div>
+      <div>
+        <span class="warranty-num">6</span><span class="warranty-unit">個月</span>
+      </div>
+      <div class="warranty-label">保固期限</div>
+      <div class="warranty-type">大樓 ／ 社區</div>
+      <div class="warranty-desc">地下室沉砂池管線、公共排水幹管、社區多戶統一清管作業</div>
+    </div>
+    <div class="warranty-card w-gold">
+      <div class="warranty-icon">🏠</div>
+      <div>
+        <span class="warranty-num">1</span><span class="warranty-unit">年</span>
+      </div>
+      <div class="warranty-label">保固期限</div>
+      <div class="warranty-type">透天厝</div>
+      <div class="warranty-desc">住宅室內排水立管及橫支管清洗作業</div>
+    </div>
+  </div>
+  <div class="warranty-exclude">
+    <b>⚠ 以下情形不在保固範圍</b>：保固期內因人為因素再次堵塞者不適用，包含異物投入（濕紙巾、廚餘殘渣、油脂持續累積等）或管路結構損壞等非施工導致之原因。如有疑問，我們仍免費到場確認原因。
   </div>
 </section>
 
