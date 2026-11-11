@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>線上估價｜勁淨科技水刀工程・住家排水管清洗</title>
-<meta name="description" content="點幾下就知道價格：住家排水管保養清洗 5,500 元起、一廚二衛套餐 7,500 元。苗栗、新竹、台中高壓水刀清管，內視鏡看管、洗前洗後影像記錄。">
+<meta name="description" content="點幾下就知道價格：住家排水管保養清洗 6,000 元起、一廚二衛套餐 8,000 元，首次服務折 500。苗栗、新竹、台中高壓水刀清管，內視鏡看管、洗前洗後影像記錄。">
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="style.css">
@@ -123,6 +123,16 @@
       </div>
     </div>
 
+    <!-- 首次優惠 -->
+    <div class="q" id="qFirst" hidden>
+      <h2><span class="n">🎉</span>第一次找勁淨嗎？</h2>
+      <p class="hint">首次服務折 500，套餐也能用（限 2026/12/31 前預約）</p>
+      <div class="opts" data-group="first">
+        <button type="button" class="opt" data-v="是" aria-pressed="false">第一次<small>折 500</small></button>
+        <button type="button" class="opt" data-v="否" aria-pressed="false">以前找過</button>
+      </div>
+    </div>
+
     <!-- 3 位置 -->
     <div class="q" id="qWhere" hidden>
       <h2><span class="n">4</span><span id="whereTitle">要清哪些排水孔？</span></h2>
@@ -184,10 +194,12 @@
 (function () {
   // ===== 價格（要調價只改這裡）=====
   var PRICE = {
-    keepFirst: 5500,   // 保養：第一孔
+    keepFirst: 6000,   // 保養：第一孔
+    firstOff: 500,     // 首次服務優惠（保養、堵塞皆適用，每張訂單一次，可與套餐併用）
+    firstUntil: "2026-12-31", // 首次優惠截止日（預約日）
     keepAdd: 1500,     // 保養：每加一孔
-    combo: 7500,       // 一廚二衛套餐（廚房 1 + 浴室地排 2）
-    clog: 8000,        // 堵塞：每管
+    combo: 8000,       // 一廚二衛套餐（廚房 1 + 浴室地排 2）
+    clog: 8500,        // 堵塞：每管
     clogAddKeep: 1500, // 堵塞時順便保養：每孔
     carry: 500,        // 沒電梯：2F 起每層搬運費
     travel: { "新竹": 1000, "台中": 1500 } // 外縣市車資；同區同日 2 戶以上免收
@@ -199,7 +211,7 @@
   ];
   var LINE_ID = "@228qpmdb";
 
-  var st = { house: "", lift: "", floor: "", mode: "", area: "", main: { kitchen: 0, bath: 0, balcony: 0 }, extra: { kitchen: 0, bath: 0, balcony: 0 } };
+  var st = { first: "", house: "", lift: "", floor: "", mode: "", area: "", main: { kitchen: 0, bath: 0, balcony: 0 }, extra: { kitchen: 0, bath: 0, balcony: 0 } };
   var $ = function (id) { return document.getElementById(id); };
   var fmt = function (n) { return "NT$" + n.toLocaleString("en-US"); };
 
@@ -282,6 +294,7 @@
       var e = count(st.extra);
       if (e) { lines.push(["順便保養 " + e + " 孔 × " + PRICE.clogAddKeep.toLocaleString("en-US"), e * PRICE.clogAddKeep]); total += e * PRICE.clogAddKeep; }
     } else return null;
+    if (st.first === "是" && promoOn()) { lines.push(["首次服務優惠（2026/12/31 前預約）", -PRICE.firstOff]); total -= PRICE.firstOff; }
     var fl = carryFloors();
     if (fl > 0) { lines.push(["搬運費（無電梯，" + st.floor + "F，" + fl + " 層 × " + PRICE.carry + "）", fl * PRICE.carry]); total += fl * PRICE.carry; }
     var tv = PRICE.travel[st.area] || 0;
@@ -290,6 +303,11 @@
       lines.push(["同區同日 2 戶以上一起約，車資全免", null, "save"]);
     }
     return { lines: lines, total: total };
+  }
+
+  function promoOn() {
+    var d = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10);
+    return d <= PRICE.firstUntil;
   }
 
   function carryFloors() {
@@ -308,6 +326,7 @@
       t += "需求：堵塞疏通\n堵住：" + desc(st.main) + "\n";
       if (count(st.extra)) t += "順便保養：" + desc(st.extra) + "\n";
     }
+    if (st.first === "是" && promoOn()) t += "首次服務：是（折 500）\n";
     t += "地區：" + (st.area || "未選") + "\n";
     t += "預估：" + fmt(r.total) + "\n";
     t += "想約時間：";
@@ -323,14 +342,15 @@
     $("scopeNote").hidden = !has;
     $("qArea").hidden = !has;
     $("qExtra").hidden = st.mode !== "clog";
+    $("qFirst").hidden = !has || !promoOn();
     $("areaNum").textContent = st.mode === "clog" ? "6" : "5";
     $("farNote").hidden = st.area !== "其他地區";
     if (st.mode === "keep") {
       $("whereTitle").textContent = "要清哪些排水孔？";
-      $("whereHint").textContent = "第 1 孔 5,500，每加 1 孔 +1,500。選廚房 1＋浴室 2，自動套用一廚二衛套餐 7,500。";
+      $("whereHint").textContent = "第 1 孔 6,000，每加 1 孔 +1,500。選廚房 1＋浴室 2，自動套用一廚二衛套餐 8,000。";
     } else if (st.mode === "clog") {
       $("whereTitle").textContent = "哪裡堵住了？";
-      $("whereHint").textContent = "堵塞疏通每管 8,000，含內視鏡確認堵塞位置、高壓水刀打通。";
+      $("whereHint").textContent = "堵塞疏通每管 8,500，含內視鏡確認堵塞位置、高壓水刀打通。";
     }
 
     var r = calc();
@@ -349,7 +369,7 @@
     $("total").textContent = fmt(r.total);
     $("barTotal").textContent = fmt(r.total);
     $("fine").innerHTML = st.mode === "keep"
-      ? "※ 到府先用內視鏡看管，若發現管內已堵塞，該管改以堵塞疏通 8,000 計價，會先拍給您看、說明清楚，您同意才施工。<br>※ 內含內視鏡看管、高壓水刀清洗、流量測試、洗前洗後影像。"
+      ? "※ 到府先用內視鏡看管，若發現管內已堵塞，該管改以堵塞疏通 8,500 計價，會先拍給您看、說明清楚，您同意才施工。<br>※ 內含內視鏡看管、高壓水刀清洗、流量測試、洗前洗後影像。"
       : "※ 管內有水泥塊、異物卡死等特殊狀況，現場評估後另行報價，同意才施工。<br>※ 內含內視鏡看管、高壓水刀清洗、流量測試、洗前洗後影像。";
     $("lineBtn").href = "https://line.me/R/oaMessage/" + encodeURIComponent(LINE_ID) + "/?" + encodeURIComponent(message(r));
   }
